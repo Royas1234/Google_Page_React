@@ -7,17 +7,30 @@ import { useState } from 'react';
 
 const SearchBar = () => {
 const [inputValue, setInputeValue] = useState("");
+function onSubmitHandler (event){
+   event.preventDefault();
+    console.log(event.target[0].value);
+    let text = event.target[0].value;
+    if (text){
+        setInputeValue(text);
+    }
+
+
+
+}
     
 
   return (
-                <div className='Search-Box'>
+    <>
+       <div className='Search-Box'>
                         <div className="inputSearch">
                         <img src={SearchIcon}alt="a clear icon" className="seach"  style={{ width:"20px" ,height:"20px"}}/>
-                            <form> 
-                                 <input type="text"  value="hello"/>
+                            <form onSubmit={onSubmitHandler}> 
+                            <input type="text"  />
                             </form>
-                          
+                    
                         </div>
+                       
                        
                         <div className="mic-Cam-Icons">
                             <div className="subTextMicClass">
@@ -34,6 +47,14 @@ const [inputValue, setInputeValue] = useState("");
                         </div>
                     
                 </div>
+                 <div>
+                    <p>{inputValue}</p>
+                
+                    
+
+                 </div>
+    </>
+             
   )
 }
 
